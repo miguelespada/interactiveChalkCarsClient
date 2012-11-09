@@ -1,4 +1,4 @@
-<bINFO>1</bINFO>
+<bINFO>0</bINFO>
 <bSHOW>0</bSHOW>
 <CAR>
     <dACC>0.15</dACC>
@@ -10,19 +10,19 @@
 </CAR>
 <OUTSIDE>
     <PT>
-        <X>28</X>
-        <Y>32</Y>
-    </PT>
-    <PT>
-        <X>1010</X>
+        <X>25</X>
         <Y>25</Y>
     </PT>
     <PT>
-        <X>981</X>
-        <Y>703</Y>
+        <X>1250</X>
+        <Y>25</Y>
     </PT>
     <PT>
-        <X>38</X>
-        <Y>710</Y>
+        <X>1250</X>
+        <Y>946</Y>
+    </PT>
+    <PT>
+        <X>25</X>
+        <Y>948</Y>
     </PT>
 </OUTSIDE>

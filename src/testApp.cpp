@@ -19,6 +19,7 @@ void testApp::setup(){
 	box2d.init();
 	box2d.setGravity(0, 0);
     box2d.setFPS(30.0);
+    box2d.createBounds();
     
     cars[0].setImage("bmw.jpg");
     cars[0].setMidi(0);
@@ -28,10 +29,18 @@ void testApp::setup(){
     cars[1].setMidi(1);
     cars[1].setup(box2d.getWorld(), OUTPUT_W/2 , OUTPUT_H/2, CAR_W/2, CAR_H/2);
     
+  /*  cars[2].setImage("tiza1.png");
+    cars[2].setMidi(2);
+    cars[2].setup(box2d.getWorld(), OUTPUT_W/2 , OUTPUT_H/2, CAR_W/2, CAR_H/2);
+    
+    cars[3].setImage("tiza1.png");
+    cars[3].setMidi(2);
+    cars[3].setup(box2d.getWorld(), OUTPUT_W/2 , OUTPUT_H/2, CAR_W/2, CAR_H/2);*/
+    
 	midiIn.openPort("ControllerMate");
 	midiIn.ignoreTypes(false, false, false);
 	midiIn.addListener(this);
-	midiIn.setVerbose(false);
+	midiIn.setVerbose(true);
     
     ofSetFrameRate(30);
     bFullScreen = false;
@@ -83,18 +92,17 @@ void testApp::draw(){
         sprintf(reportStr, "fps:%3.0f  [mouse picker] %3d %1d %1d", ofGetFrameRate() , c.r, iO, iOB);
         ofDrawBitmapString(reportStr, 20, 685);
         
-        sprintf(reportStr, "[R] reset car [a] dAcc %3.2f [d] dDec %3.2f [r] dRot %3.2f [M] maxV %3.2f [m] minV  %3.2f [n] outV %3.2f", dAcc, dDec, dRot, maxV, minV, outV);
-        ofDrawBitmapString(reportStr, 20, 700);
-        for(int i = 0; i < N_CARS; i++){
+               for(int i = 0; i < N_CARS; i++){
             sprintf(reportStr, "%d CAR (%3.f,%3.f) [%4.2f]",
                     i,
                     cars[i].getPosition().x,
                     cars[i].getPosition().y,
                     cars[i].acc );
-            ofDrawBitmapString(reportStr, 20, 715 + i*15);
+            ofDrawBitmapString(reportStr, 20, 700 + i*15);
         }
         
     }
+        
 }
 
 //--------------------------------------------------------------
@@ -276,8 +284,8 @@ bool testApp::isOut(int x, int y){
     xx = x + d;
     yy = y + d;
     
-    if(pix.getColor(xx, yy).r > 120) return true;
-    
+    if(pix.getColor(x, y).r > 120) return true;
+    /*
     xx = x - d;
     yy = y + d;
     if(pix.getColor(xx, yy).r > 120) return true;
@@ -288,7 +296,7 @@ bool testApp::isOut(int x, int y){
     
     xx = x - d;
     yy = y - d;
-    if(pix.getColor(xx, yy).r > 120) return true;
+    if(pix.getColor(xx, yy).r > 120) return true;*/
     return false;
 }
 
@@ -299,8 +307,8 @@ bool testApp::isOutBounds (int x, int y){
     xx = x + d;
     yy = y + d;
     
-    if(pix.getColor(xx, yy).r == 50) return true;
-    
+    if(pix.getColor(x, y).r == 50) return true;
+    /*
     xx = x - d;
     yy = y + d;
     if(pix.getColor(xx, yy).r == 50) return true;
@@ -311,7 +319,7 @@ bool testApp::isOutBounds (int x, int y){
     
     xx = x - d;
     yy = y - d;
-    if(pix.getColor(xx, yy).r == 50) return true;
+    if(pix.getColor(xx, yy).r == 50) return true;*/
     return false;
 }
 

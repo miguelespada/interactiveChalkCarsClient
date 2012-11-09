@@ -7,8 +7,8 @@
 #include "ofxBox2d.h"
 #include "ofxMidi.h"
 
-#define OUTPUT_W 1024
-#define OUTPUT_H 768
+#define OUTPUT_W 1280
+#define OUTPUT_H 960
 
 class testApp : public ofBaseApp, public ofxMidiListener{
         
